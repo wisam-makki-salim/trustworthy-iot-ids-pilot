@@ -40,7 +40,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/g1_audit.py
 python scripts/g2_baselines.py
-python scripts/g3_pareto_selection.py
+python scripts/g3_operating_point_selection.py
 python scripts/g4_uncertainty.py
 ```
 
@@ -57,7 +57,7 @@ scripts/                              Data audit, baselines, selection, uncertai
 results/                              Retained machine-readable results
 figures/                              Figures in PNG and PDF formats
 Wisam_PhD_Research_Pilot.ipynb        Executed results-review notebook
-Wisam_Makki_Salim_Research_Pilot.pdf  Four-page research report
+Wisam_Makki_Salim_Research_Pilot.pdf  Two-page executive research brief
 requirements.txt                      Pinned Python dependencies
 CITATION.cff                          Citation metadata
 ```
