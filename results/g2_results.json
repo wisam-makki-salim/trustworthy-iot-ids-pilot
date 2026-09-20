@@ -1,0 +1,153 @@
+{
+  "protocol": {
+    "seed": 20260920,
+    "split": "60% development / 20% validation / 20% sealed test",
+    "threshold": 0.5,
+    "test_used_for_selection": false,
+    "input_sha256": "8b43d6552a8cafd3b0ca2cedf6464ca3fe644d7fc9bb5dfe906368f1542792fe"
+  },
+  "cleaning": {
+    "raw_rows": 712311,
+    "conflicting_feature_hash_groups_removed": 16,
+    "rows_after_conflict_removal_and_feature_deduplication": 518091,
+    "attack_rows_after_cleaning": 501540,
+    "benign_rows_after_cleaning": 16551
+  },
+  "split_counts": {
+    "development": {
+      "rows": 310854,
+      "attack": 300923,
+      "benign": 9931
+    },
+    "validation": {
+      "rows": 103618,
+      "attack": 100308,
+      "benign": 3310
+    },
+    "test": {
+      "rows": 103619,
+      "attack": 100309,
+      "benign": 3310
+    }
+  },
+  "models": {
+    "logistic_regression": {
+      "fit_seconds": 6.574755501999789,
+      "model_size_bytes": 2985,
+      "complexity": {
+        "nonzero_coefficients": 39,
+        "coefficient_count": 39,
+        "iterations": [
+          119
+        ]
+      },
+      "validation_default_threshold": {
+        "threshold": 0.5,
+        "tn": 3307,
+        "fp": 3,
+        "fn": 3136,
+        "tp": 97172,
+        "precision_attack": 0.9999691278621045,
+        "recall_attack": 0.9687362922199625,
+        "f1_attack": 0.9841049609333462,
+        "false_positive_rate": 0.0009063444108761329,
+        "balanced_accuracy": 0.9839149739045432,
+        "mcc": 0.7047896190566861,
+        "roc_auc": 0.9929185510440531,
+        "average_precision_attack": 0.9997683118653944,
+        "average_precision_benign": 0.7682158688107963,
+        "macro_average_precision": 0.8839920903380953
+      },
+      "test_default_threshold": {
+        "threshold": 0.5,
+        "tn": 3309,
+        "fp": 1,
+        "fn": 3130,
+        "tp": 97179,
+        "precision_attack": 0.9999897098168348,
+        "recall_attack": 0.9687964190650888,
+        "f1_attack": 0.9841459524327937,
+        "false_positive_rate": 0.00030211480362537764,
+        "balanced_accuracy": 0.9842471521307317,
+        "mcc": 0.7054778105041813,
+        "roc_auc": 0.9931651348390874,
+        "average_precision_attack": 0.9997764665936383,
+        "average_precision_benign": 0.7695125774896268,
+        "macro_average_precision": 0.8846445220416326
+      },
+      "validation_inference": {
+        "repeats": 5,
+        "median_total_seconds": 0.06566450999980589,
+        "median_ms_per_flow": 0.0006337172112934615,
+        "throughput_flows_per_second": 1577990.9116858758
+      },
+      "test_inference": {
+        "repeats": 5,
+        "median_total_seconds": 0.05945613299991237,
+        "median_ms_per_flow": 0.000573795664886868,
+        "throughput_flows_per_second": 1742780.6816859872
+      }
+    },
+    "random_forest": {
+      "fit_seconds": 9.279753520000213,
+      "model_size_bytes": 5830635,
+      "complexity": {
+        "trees": 200,
+        "total_nodes": 218352,
+        "max_observed_depth": 20
+      },
+      "validation_default_threshold": {
+        "threshold": 0.5,
+        "tn": 3251,
+        "fp": 59,
+        "fn": 1575,
+        "tp": 98733,
+        "precision_attack": 0.99940278565066,
+        "recall_attack": 0.9842983610479722,
+        "f1_attack": 0.9917930688096434,
+        "false_positive_rate": 0.01782477341389728,
+        "balanced_accuracy": 0.9832367938170374,
+        "mcc": 0.806523868961574,
+        "roc_auc": 0.996871468204215,
+        "average_precision_attack": 0.9998976154206519,
+        "average_precision_benign": 0.8913923690681023,
+        "macro_average_precision": 0.945644992244377
+      },
+      "test_default_threshold": {
+        "threshold": 0.5,
+        "tn": 3249,
+        "fp": 61,
+        "fn": 1614,
+        "tp": 98695,
+        "precision_attack": 0.9993823160111791,
+        "recall_attack": 0.9839097189683876,
+        "f1_attack": 0.9915856629744053,
+        "false_positive_rate": 0.018429003021148038,
+        "balanced_accuracy": 0.9827403579736198,
+        "mcc": 0.8027746887294707,
+        "roc_auc": 0.9968250899283149,
+        "average_precision_attack": 0.9998960653738141,
+        "average_precision_benign": 0.8926381378945828,
+        "macro_average_precision": 0.9462671016341985
+      },
+      "validation_inference": {
+        "repeats": 5,
+        "median_total_seconds": 0.11738735200015071,
+        "median_ms_per_flow": 0.001132885714838645,
+        "throughput_flows_per_second": 882701.5707779741
+      },
+      "test_inference": {
+        "repeats": 5,
+        "median_total_seconds": 0.12379310500000429,
+        "median_ms_per_flow": 0.0011946950366245987,
+        "throughput_flows_per_second": 837033.6942432813
+      }
+    }
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.8.0"
+  }
+}

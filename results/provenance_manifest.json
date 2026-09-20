@@ -1,0 +1,32 @@
+{
+  "dataset": "CICIoT2023",
+  "retrieval_date": "2026-09-20",
+  "official_landing_page": "https://www.unb.ca/cic/datasets/iotdataset-2023.html",
+  "official_download_portal": "https://cicresearch.ca/IOTDataset/CIC_IOT_Dataset2023/",
+  "article_doi": "10.3390/s23135941",
+  "license_status": "No explicit standalone dataset license identified on the official landing page or downloaded README files; do not redistribute raw data.",
+  "pilot_scope": "Official merged shard Merged01.csv",
+  "files": [
+    {
+      "name": "Merged01.csv",
+      "size_bytes": 147115614,
+      "sha256": "8b43d6552a8cafd3b0ca2cedf6464ca3fe644d7fc9bb5dfe906368f1542792fe"
+    },
+    {
+      "name": "README.pdf",
+      "sha256": "0f48daba395be03985f612ce706d33f1a25e4008cb94c3ad7b6f6332fbdbee92"
+    },
+    {
+      "name": "CSV_README.pdf",
+      "sha256": "01bdf30343455fb6d252ec415da19d5d8b1c3add16b09d63598be870fe2a057d"
+    },
+    {
+      "name": "README_CSV.pdf",
+      "sha256": "76d79460e416b88a28e9db3573255ea5fb5fca836fc2e3d3f794a4df2b9e7e98"
+    },
+    {
+      "name": "example.ipynb",
+      "sha256": "0f0c0bac3740433611af414c85816404f859cfdd2afcb66e4cde9b2b3e77d7ba"
+    }
+  ]
+}

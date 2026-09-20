@@ -1,0 +1,94 @@
+{
+  "method": {
+    "name": "stratified nonparametric bootstrap of frozen binary decisions",
+    "equivalent_implementation": "independent binomial resampling within benign and attack strata",
+    "replicates": 10000,
+    "seed": 20260920,
+    "confidence_level": 0.95,
+    "model": "random_forest",
+    "threshold": 0.5985298793840453
+  },
+  "intervals": {
+    "validation": {
+      "precision_attack": {
+        "observed": 0.9996753345575926,
+        "bootstrap_median": 0.9996754925921043,
+        "ci_95_lower": 0.9995635003012312,
+        "ci_95_upper": 0.999776912920965
+      },
+      "recall_attack": {
+        "observed": 0.9822845635442836,
+        "bootstrap_median": 0.9822845635442836,
+        "ci_95_lower": 0.9814571120947482,
+        "ci_95_upper": 0.9830923256370379
+      },
+      "f1_attack": {
+        "observed": 0.9909036511105189,
+        "bootstrap_median": 0.9909041999567585,
+        "ci_95_lower": 0.990472925679303,
+        "ci_95_upper": 0.9913194771679464
+      },
+      "false_positive_rate": {
+        "observed": 0.009667673716012085,
+        "bootstrap_median": 0.009667673716012085,
+        "ci_95_lower": 0.006646525679758308,
+        "ci_95_upper": 0.012990936555891239
+      },
+      "balanced_accuracy": {
+        "observed": 0.9863084449141357,
+        "bootstrap_median": 0.986353306739713,
+        "ci_95_lower": 0.9845206306117942,
+        "ci_95_upper": 0.9879437217810231
+      },
+      "mcc": {
+        "observed": 0.7939735825609772,
+        "bootstrap_median": 0.7939873909898904,
+        "ci_95_lower": 0.7868897047656597,
+        "ci_95_upper": 0.8010102229828865
+      }
+    },
+    "test": {
+      "precision_attack": {
+        "observed": 0.9995939498528068,
+        "bootstrap_median": 0.999594013732475,
+        "ci_95_lower": 0.999462261813054,
+        "ci_95_upper": 0.9997156322535963
+      },
+      "recall_attack": {
+        "observed": 0.9816666500513413,
+        "bootstrap_median": 0.9816666500513413,
+        "ci_95_lower": 0.9808392068508309,
+        "ci_95_upper": 0.9824841240566649
+      },
+      "f1_attack": {
+        "observed": 0.9905491929845739,
+        "bootstrap_median": 0.9905491929845739,
+        "ci_95_lower": 0.9901267072567725,
+        "ci_95_upper": 0.9909649912264382
+      },
+      "false_positive_rate": {
+        "observed": 0.012084592145015106,
+        "bootstrap_median": 0.012084592145015106,
+        "ci_95_lower": 0.008459214501510574,
+        "ci_95_upper": 0.016012084592145016
+      },
+      "balanced_accuracy": {
+        "observed": 0.9847910289531632,
+        "bootstrap_median": 0.9848124868175465,
+        "ci_95_lower": 0.9828506755891666,
+        "ci_95_upper": 0.9866201910417053
+      },
+      "mcc": {
+        "observed": 0.7875178506780638,
+        "bootstrap_median": 0.7875278524720961,
+        "ci_95_lower": 0.7805572328091407,
+        "ci_95_upper": 0.7945095694860163
+      }
+    }
+  },
+  "constraint_assessment": {
+    "target_fpr": 0.01,
+    "validation_ci_contains_target": true,
+    "test_ci_contains_target": true
+  }
+}
