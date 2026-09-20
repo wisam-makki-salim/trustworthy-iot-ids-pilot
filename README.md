@@ -1,80 +1,72 @@
-# Trustworthy and Resilient Network Intrusion Detection
+# False-Positive-Constrained IoT Intrusion Detection
 
-## A reproducible proof-of-execution pilot
+A reproducible pilot study using one fixed shard of the CICIoT2023 dataset.
 
-**Researcher:** Wisam Makki Salim  
-**Purpose:** German PhD supervisor outreach - research execution evidence, not a completed paper
+## Study question
 
-This pilot evaluates binary IoT intrusion detection under explicit false-alarm and computational constraints. It uses one fixed official shard of CICIoT2023 and emphasizes provenance, leakage control, reproducibility, operational trade-offs, and uncertainty rather than an accuracy-only claim.
+Can an operating point chosen on validation data reduce false alarms while retaining high attack recall, and does that operating point continue to satisfy the same false-positive-rate constraint on held-out data?
 
-## Research question
+## Dataset
 
-Can validation-only operating-point selection produce a more operationally useful trade-off between attack recall, false-positive rate, inference cost, and model complexity than default-threshold intrusion-detection baselines?
+- **Dataset:** CICIoT2023
+- **Official source:** https://www.unb.ca/cic/datasets/iotdataset-2023.html
+- **Associated article:** https://doi.org/10.3390/s23135941
+- **Input used:** `Merged01.csv`
+- **Required SHA-256:** `8b43d6552a8cafd3b0ca2cedf6464ca3fe644d7fc9bb5dfe906368f1542792fe`
 
-## Data
-
-- Dataset: CICIoT2023
-- Official source: https://www.unb.ca/cic/datasets/iotdataset-2023.html
-- Associated article: https://doi.org/10.3390/s23135941
-- Pilot input: `Merged01.csv`
-- Required SHA-256: `8b43d6552a8cafd3b0ca2cedf6464ca3fe644d7fc9bb5dfe906368f1542792fe`
-- Raw data are not redistributed. Registration may be required at the official portal.
-
-Place the downloaded file at:
+The raw dataset is not redistributed. Download `Merged01.csv` from the official source and place it at:
 
 ```text
 data/ciciot2023/Merged01.csv
 ```
 
-## Core findings
+## Design
 
-The audit found 23.50% exact duplicate rows, 27.26% duplicate feature rows, 16 feature groups with conflicting binary labels, 22 missing cells, and 14 infinite values. The primary workflow removes conflicting groups, keeps one representative per feature vector, and creates a fixed 60/20/20 stratified split.
+The analysis treats identical feature vectors as one sampling unit. Feature groups with conflicting binary labels are excluded, and one representative of each remaining feature vector is retained before a fixed 60/20/20 development-validation-test split is created. Preprocessing is fitted on development data only.
 
-At the default threshold, Logistic Regression produced fewer false alarms while Random Forest detected more attacks and achieved higher MCC. Validation-only constrained selection chose Random Forest at threshold 0.5985298794. On held-out test data, attack recall was 98.167% and FPR was 1.208%. The 95% bootstrap interval for FPR was 0.846% to 1.601%, so the evidence does not establish that the operational FPR is reliably below the 1% target.
+Two class-weighted baselines are compared: Logistic Regression and Random Forest. For each model, the validation threshold with the highest attack recall subject to `FPR <= 1%` is identified. If the best recalls differ by no more than 0.1 percentage points, the smaller fitted model is preferred. The selected model and threshold are then applied once to the held-out test partition.
 
-## Reproduce
+## Main result
 
-Create an environment and install dependencies:
+The rule selected Random Forest at a threshold of `0.5985298794`. On the held-out partition, attack recall was `98.167%` and the false-positive rate was `1.208%`. The conditional 95% bootstrap interval for the false-positive rate was `0.846% to 1.601%`. The validation constraint therefore did not remain satisfied as a point estimate on the held-out partition.
+
+This result is specific to one randomly partitioned benchmark shard. It is not evidence of temporal robustness, deployment readiness, or cross-network generalization.
+
+## Reproduce the pipeline
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-Run the stages:
-
-```bash
 python scripts/g1_audit.py
 python scripts/g2_baselines.py
 python scripts/g3_pareto_selection.py
 python scripts/g4_uncertainty.py
 ```
 
-Or open `Wisam_PhD_Research_Pilot.ipynb` and execute the staged cells.
+The scripts write full intermediate artifacts to `outputs/`. The `results/` directory contains the compact tables and JSON records retained with this repository. Open `Wisam_PhD_Research_Pilot.ipynb` for an executed review of those retained results.
 
-## Reproducibility controls
+## Timing caveat
 
-- Fixed seed: `20260920`
-- Locked input hash
-- Pre-split feature deduplication
-- Conflicting-label group exclusion
-- Development-only preprocessing
-- Validation-only threshold and model selection
-- Frozen test application
-- Saved machine-readable metrics and figures
+Inference timings are included as measurements from the original execution environment. Hardware metadata were not retained for that run, so the absolute values should not be used for comparisons with other systems. The current baseline script records platform and processor information on subsequent runs.
 
-## Boundaries
-
-This is a proof-of-execution pilot. It does not claim a new classifier, state-of-the-art performance, temporal robustness, production readiness, or cross-network generalization. The natural PhD extension is confidence-bounded adaptive thresholding under distribution shift with external and temporally separated validation.
-
-## Repository map
+## Repository contents
 
 ```text
-scripts/                              Auditing, baselines, selection, uncertainty
-results/                              Saved audit and evaluation outputs
-figures/                              Publication-quality figures (PNG and PDF)
-Wisam_PhD_Research_Pilot.ipynb        Staged reproducible notebook
-Wisam_Makki_Salim_Research_Pilot.pdf  Four-page supervisor-facing report
-SUPERVISOR_RELEVANCE.md               Supervisor-specific relevance blocks
+scripts/                              Data audit, baselines, selection, uncertainty
+results/                              Retained machine-readable results
+figures/                              Figures in PNG and PDF formats
+Wisam_PhD_Research_Pilot.ipynb        Executed results-review notebook
+Wisam_Makki_Salim_Research_Pilot.pdf  Four-page research report
+requirements.txt                      Pinned Python dependencies
+CITATION.cff                          Citation metadata
 ```
+
+## Scope
+
+The implemented contribution is a constrained, validation-only operating-point rule with a model-size tie-breaker. It is not a new classifier or a full multi-objective optimizer. A subsequent study should use temporal or device-group separation, external validation, repeated training runs, and confidence-aware threshold selection under changing traffic conditions.
+
+## Author
+
+Wisam Makki Salim  
+ORCID: https://orcid.org/0009-0000-6998-3912

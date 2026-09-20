@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Leakage-controlled CICIoT2023 baselines for the Germany PhD pilot."""
+"""Leakage-controlled binary baselines for the fixed CICIoT2023 shard."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import os
 import platform
 import time
 from pathlib import Path
@@ -213,6 +214,11 @@ def main() -> None:
             "numpy": np.__version__,
             "pandas": pd.__version__,
             "scikit_learn": sklearn.__version__,
+            "platform": platform.platform(),
+            "machine": platform.machine(),
+            "processor": platform.processor() or "not reported by operating system",
+            "logical_cpu_count": os.cpu_count(),
+            "timing_note": "Batch inference timing includes pipeline preprocessing and is environment-specific.",
         },
     }
     prediction_frames = []

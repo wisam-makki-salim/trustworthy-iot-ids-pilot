@@ -82,13 +82,14 @@ def main() -> None:
 
     output = {
         "method": {
-            "name": "stratified nonparametric bootstrap of frozen binary decisions",
-            "equivalent_implementation": "independent binomial resampling within benign and attack strata",
+            "name": "conditional stratified bootstrap of frozen binary decisions",
+            "implementation": "independent binomial resampling within benign and attack strata",
             "replicates": REPLICATES,
             "seed": SEED,
             "confidence_level": 0.95,
             "model": selection["selected_model"],
             "threshold": selection["selected_threshold"],
+            "scope_note": "Intervals condition on the fitted model, selected threshold, and observed partition; they do not include training or model-selection variability.",
         },
         "intervals": summaries,
         "constraint_assessment": {

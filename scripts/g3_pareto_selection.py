@@ -182,9 +182,9 @@ def main() -> None:
     axes[1].set_ylabel("Median batch latency (µs/flow)")
     axes[1].set_title("B. Computational cost")
     axes[1].grid(alpha=0.22)
-    fig.suptitle("Validation-constrained model and operating-point selection", fontsize=13, fontweight="bold")
-    fig.savefig(OUT / "g3_pareto_tradeoff.png", dpi=300, bbox_inches="tight")
-    fig.savefig(OUT / "g3_pareto_tradeoff.pdf", bbox_inches="tight")
+    fig.suptitle("Validation-constrained operating-point selection", fontsize=13, fontweight="bold")
+    fig.savefig(OUT / "g3_operating_point_tradeoff.png", dpi=300, bbox_inches="tight")
+    fig.savefig(OUT / "g3_operating_point_tradeoff.pdf", bbox_inches="tight")
     plt.close(fig)
 
 

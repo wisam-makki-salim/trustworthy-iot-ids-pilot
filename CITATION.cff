@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this pilot or its code, please cite it using the metadata below."
+title: "False-Positive-Constrained IoT Intrusion Detection: A Reproducible Pilot Study"
+type: software
+authors:
+  - family-names: Salim
+    given-names: Wisam Makki
+    orcid: "https://orcid.org/0009-0000-6998-3912"
+repository-code: "https://github.com/wisam-makki-salim/trustworthy-iot-ids-pilot"
+date-released: 2026-09-20
+version: "2.0"
+preferred-citation:
+  type: report
+  title: "False-Positive-Constrained IoT Intrusion Detection: A Reproducible Pilot Study"
+  authors:
+    - family-names: Salim
+      given-names: Wisam Makki
+      orcid: "https://orcid.org/0009-0000-6998-3912"
+  year: 2026

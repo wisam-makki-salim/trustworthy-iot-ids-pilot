@@ -1,12 +1,13 @@
 {
   "method": {
-    "name": "stratified nonparametric bootstrap of frozen binary decisions",
-    "equivalent_implementation": "independent binomial resampling within benign and attack strata",
+    "name": "conditional stratified bootstrap of frozen binary decisions",
+    "implementation": "independent binomial resampling within benign and attack strata",
     "replicates": 10000,
     "seed": 20260920,
     "confidence_level": 0.95,
     "model": "random_forest",
-    "threshold": 0.5985298793840453
+    "threshold": 0.5985298793840453,
+    "scope_note": "Intervals condition on the fitted model, selected threshold, and observed partition; they do not include training or model-selection variability."
   },
   "intervals": {
     "validation": {
